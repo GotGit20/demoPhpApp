@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+  namespace: frontend-app
+  labels:
+    app: nginx-php-app
+spec:
+  selector:
+    matchLabels:
+      app: nginx-php-app
+  template:
+    metadata:
+      name: app-deployment
+      labels:
+        app: nginx-php-app
+    spec:
+      containers:
+        - name: nginx-php-container
+          image: trafex/php-nginx
+          ports:
+           - containerPort: 8080
